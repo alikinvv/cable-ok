@@ -20,6 +20,11 @@ var phoneMask = IMask(
         mask: '+{7}(000)000-00-00'
 });
 
+var phoneMask2 = IMask(
+    document.getElementById('phone-mask2'), {
+        mask: '+{7}(000)000-00-00'
+});
+
 let mobileMenu = () => {
     if ($(window).width() <= 767) {
         $('.header').after($('.header__menu'));
@@ -39,4 +44,39 @@ $(window).on('resize', mobileMenu);
 $('body').on('click', '.hamburger', (e) => {
     $(e.currentTarget).toggleClass('active');
     $('.header__menu').toggleClass('active').slideToggle();
+});
+
+// show modal
+$('body').on('click', '[data-modal]:not(.modal)', (e) => {
+    if (!$('.backdrop').hasClass('active')) $('.backdrop').addClass('active');
+    $('.modal.active').removeClass('active');
+    $(`.modal[data-modal="${$(e.currentTarget).attr('data-modal')}"]`).addClass('active');
+
+    if ($(e.currentTarget).attr('data-modal') === 'thanks') {
+        setTimeout(() => {
+            $('.modal.active').find('svg').addClass('animate');
+        }, 100);
+    }
+});
+
+// close modal events
+let closeModal = () => {
+    $('.backdrop').removeClass('active');
+    $('.modal').removeClass('active');
+    $('.modal').find('svg').removeClass('animate');
+}
+
+$('body').on('click', '.modal__close, .modal .close', closeModal);
+
+$('body').on('click', '.backdrop', (e) => {
+    if ($(e.target)[0].className === 'backdrop active') closeModal();
+});
+
+// close modal on press ESC
+$(document).keyup((e) => {
+    if (e.keyCode === 27 && $('.backdrop').hasClass('active')) closeModal();
+});
+
+$('form').on('submit', (e) => {
+    e.preventDefault();
 });

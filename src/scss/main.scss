@@ -125,6 +125,16 @@ h2 {
 	}
 }
 
+input {
+	width: 100%;
+	padding: 16px 12px;
+	margin-bottom: 20px;
+
+	&::placeholder {
+		color: #828282;
+	}
+}
+
 .subtitle {
 	@include r(1279) {
 		padding-left: 0;
@@ -242,24 +252,29 @@ h2 {
 		display: flex;
 		align-items: center;
 
-		&:hover {
-			.link {
-				border-color: transparent;
-			}
-		}
-
 		img {
 			margin-right: 10px;
 		}
 
-		span {
-			@include r(1023) {
-				display: none !important;
+		a {			font-size: 16px;
+			display: flex;
+			align-items: center;
+
+			span {
+				@include r(767) {
+					display: none !important;
+				}
 			}
 
-			font-size: 16px;
-
 			&.link {
+				@include r(1023) {
+					display: none !important;
+				}
+
+				&:hover {
+					border-color: transparent;
+				}
+				
 				color: $orange;
 				border-bottom: 1px solid;
 				display: inline-block;
@@ -1145,16 +1160,6 @@ h2 {
 		width: 100%;
 		margin-bottom: 22px;
 
-		input {
-			width: 100%;
-			padding: 16px 12px;
-			margin-bottom: 20px;
-
-			&::placeholder {
-				color: #828282;
-			}
-		}
-
 		button {
 			width: 100%;
 			padding-top: 16px;
@@ -1343,4 +1348,167 @@ h2 {
 	border-top: 1px solid #C4C4C4;
 	text-align: center;
 	padding: 17px 0;
+}
+
+.backdrop {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	opacity: 0;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: -1;
+	transition: $trans;
+
+	&.active {
+		opacity: 1;
+		z-index: 11;
+	}
+}
+
+.modal {
+	display: none;
+	opacity: 0;
+	background: #fff;
+	cursor: default;
+	position: relative;
+    border-radius: 10px;
+
+	&.active {
+		display: block;
+		opacity: 1;
+	}
+
+	&[data-modal="callback"] {
+		@include r(767) {
+			min-width: auto;
+			width: 95%;
+		}
+
+		min-width: 479px;
+	}
+
+	&[data-modal="thanks"] {
+		@include r(767) {
+			min-width: auto;
+			width: 95%;
+		}
+		
+		text-align: center;
+		min-width: 483px;
+
+		svg.animate {
+			circle, rect {
+				stroke-dashoffset: 0;
+				opacity: 1;
+			}
+		}
+
+		circle {
+			transition: all 1s ease-in-out;
+			stroke-dasharray: 180.81460571289062;
+			stroke-dashoffset: 180.81460571289062;
+		}
+
+		rect {
+			opacity: 0;
+			transition: all .8s ease-in-out .2s;
+		}
+
+		p {
+			font-size: 14px;
+			line-height: 1.4;
+			margin-bottom: 20px;
+
+			strong {
+				font-size: 18px;
+				line-height: 1.3;
+				display: inline-block;
+				margin-bottom: 7px;
+			}
+		}
+
+		.btn {
+			border-radius: 100px;
+			padding: 12px 39px;
+		}
+
+		.modal__body {
+			padding: 40px 60px 50px;
+
+			svg {
+				margin-bottom: 7px;
+			}
+		}
+	}
+
+	&__header {
+		padding: 40px 60px 20px;
+		border-bottom: 1px solid #EFEFEF;
+	}
+	
+	&__title {
+		font-weight: bold;
+		font-size: 24px;
+	}
+	
+	&__body {
+		padding: 25px 60px 50px;
+
+		form {
+			display: flex;
+			flex-direction: column;
+
+			input,
+			button {
+				width: 100%;
+			}
+
+			input {
+				margin-bottom: 20px;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+	&__close {
+		position: absolute;
+		right: 15px;
+		top: 13px;
+		width: 15px;
+		height: 15px;
+		cursor: pointer;
+		transition: $trans;
+
+		&:hover {
+			transform: scale(1.3);
+		}
+
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 1px;
+			height: 100%;
+			background: #777;
+		}
+
+		&::before {
+			transform: translate(-50%, -50%) rotate(45deg);
+		}
+
+		&::after {
+			transform: translate(-50%, -50%) rotate(-45deg);
+		}
+	}
 }

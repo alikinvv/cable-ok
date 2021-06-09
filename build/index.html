@@ -26,11 +26,13 @@
                 <a href="javascript:void(0)" data-scroll="contacts"><span>Контакты</span></a>
             </div>
         </div>
-        <a href="tel:0976208484" class="header__call">
-            <img src="img/phone.svg" alt="">
-            <span>097 620 84 84</span>
-            <span class="link">Заказать звонок</span>
-        </a>
+        <div class="header__call">
+            <a href="tel:0976208484">
+                <img src="img/phone.svg" alt="">
+                <span>097 620 84 84</span>
+            </a>
+            <a href="javascript:void(0)" data-modal="callback" class="link">Заказать звонок</a>
+        </div>
     </div>
 </header>
 
@@ -44,7 +46,7 @@
             <li>Автоматы, УЗО, ДИФ</li>
             <li>Гофротруба и крепеж</li>
         </ul>
-        <a href="javascript:void(0)" class="btn">Выбрать это решение</a>
+        <a href="javascript:void(0)" class="btn" data-modal="callback">Выбрать это решение</a>
     </div>
 </section>
 
@@ -130,7 +132,7 @@
                 </div>
             </div>
         </div>
-        <a href="javascript:void(0)" class="btn center">Консультация специалиста</a>
+        <a href="javascript:void(0)" class="btn center" data-modal="callback">Консультация специалиста</a>
     </div>
 </section>
 
@@ -215,7 +217,7 @@
                 <div class="call__subtitle">Индивидуальный комплект <br>
                     для базовой проводки в Вашем доме </div>
                 <div class="call__text">Закажите с нашей помощью в телефонном режиме</div>
-                <a href="javascript:void(0)" class="btn">Бесплатный звонок</a>
+                <a href="javascript:void(0)" class="btn" data-modal="callback">Бесплатный звонок</a>
             </div>
         </div>
     </div>
@@ -365,7 +367,7 @@
 
                 <div class="or">
                     <div>- или же - </div>
-                    <div><span>Напишите нам</span> <a href="javascript:void(0)"><img src="img/telegram-color.svg" alt=""></a><a href="javascript:void(0)"><img src="img/viber-color.svg" alt=""></a><a href="javascript:void(0)"><img src="img/whatsapp-color.svg" alt=""></a></div>
+                    <div><span>Напишите нам</span> <a href="https://telegram.im/@+380996208484"><img src="img/telegram-color.svg" alt=""></a><a href="viber://add?number=0996208484"><img src="img/viber-color.svg" alt=""></a><a href="https://wa.me/+380996208484"><img src="img/whatsapp-color.svg" target="_blank" alt=""></a></div>
                 </div>
             </div>
             <div>
@@ -373,10 +375,10 @@
                 <ul>
                     <li><a href="tel:0976208484"><img src="img/phone-white.svg" alt=""> 097 620 84 84</a></li>
                     <li><a href="mailto:sale@cable-ok.com.ua"><img src="img/mail.svg" alt=""> sale@cable-ok.com.ua</a></li>
-                    <li><a href="javascript:void(0)" class="underline">Skype</a></li>
-                    <li><a href="tel:0996208484"><img src="img/viber.svg" width="23" alt="">099 620-84-84</a></li>
-                    <li><a href="tel:+380996208484"><img src="img/telegram.svg" width="23" alt="">+380996208484</a></li>
-                    <li><a href="tel:+380996208484"><img src="img/whatsapp.svg" width="23" alt="">+380996208484</a></li>
+                    <li><a href="skype://0996208484?call" class="underline">Skype</a></li>
+                    <li><a href="viber://add?number=0996208484"><img src="img/viber.svg" width="23" alt="">099 620-84-84</a></li>
+                    <li><a href="https://telegram.im/@+380996208484"><img src="img/telegram.svg" width="23" alt="">+380996208484</a></li>
+                    <li><a href="https://wa.me/+380996208484" target="_blank"><img src="img/whatsapp.svg" width="23" alt="">+380996208484</a></li>
                 </ul>
                 <div class="addr">
                     <img src="img/point.svg" alt="">
@@ -405,6 +407,40 @@
         © 2021 Кабель-ОК интернет магазин кабельно-проводниковой продукции
     </div>
 </section>
+
+<div class="backdrop">
+    <div class="modal" data-modal="thanks">
+        <div class="modal__close"></div>
+        <div class="modal__content">
+            <div class="modal__body">
+                <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="29.9999" cy="30.1127" r="28.8241" stroke="#00CE52"/>
+                    <rect class="l1" x="17.1621" y="30.1475" width="1.11981" height="13.9354" rx="0.559903" transform="rotate(-45 17.1621 30.1475)" fill="#00CE52"/>
+                    <rect class="l2" x="44.5547" y="21.1216" width="1.11981" height="25.7034" rx="0.559903" transform="rotate(45 44.5547 21.1216)" fill="#00CE52"/>
+                </svg>
+                
+                <p><strong>Спасибо за заявку!</strong> <br> Наш менеджер свяжется с вами в течение 10 минут, <br> оставайтесь на связи</p>
+                <a href="javascript:void(0)" class="btn close">Закрыть</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" data-modal="callback">
+        <div class="modal__close"></div>
+        <div class="modal__content">
+            <div class="modal__close"></div>
+            <div class="modal__header">
+                <div class="modal__title">Обратный звонок</div>
+            </div>
+            <div class="modal__body">
+               <form action="">
+                   <input type="text" name="phone" id="phone-mask2" placeholder="Телефон*">
+                   <button type="submit" data-modal="thanks" class="btn">Жду звонок</button>
+               </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- END CONTENT  -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

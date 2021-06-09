@@ -428,6 +428,11 @@ h2 {
 		transition: all .6s ease-in-out .8s;
 		opacity: 0;
 		transform: translateY(-50px);
+
+		&.anime {
+			transition-delay: 0s;
+			transition: $trans;
+		}
 	}
 }
 

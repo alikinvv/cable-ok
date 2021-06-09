@@ -11,6 +11,10 @@ $('body').on('click', 'a[data-scroll]', (e) => {
 
 $('.main').addClass('show');
 
+setTimeout(() => {
+    $('.main .btn').addClass('anime');
+}, 1000)
+
 var phoneMask = IMask(
     document.getElementById('phone-mask'), {
         mask: '+{7}(000)000-00-00'

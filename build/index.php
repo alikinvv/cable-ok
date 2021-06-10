@@ -350,19 +350,20 @@
 
         <div class="flex">
             <div>
-                <form action="">
+                <form action="" name="consultation" class="consultation">
                     <div class="form-title">Закажите констультацию <br> <strong>бесплатно</strong> прямо сейчас</div>
                     <div class="form-group">
-                        <input type="text" placeholder="Имя*">
+                        <input type="text" name="name" placeholder="Имя*">
                     </div>
                     <div class="form-group">
                         <input type="text" name="phone" id="phone-mask" placeholder="Телефон*">
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Email">
+                        <input type="email" name="email" placeholder="Email">
                     </div>
     
-                    <button class="btn">Отправить</button>
+                    <input type="hidden" name="hide" value="consultation">
+                    <button type="submit" class="btn">Отправить</button>
                 </form>
 
                 <div class="or">
@@ -433,8 +434,9 @@
                 <div class="modal__title">Обратный звонок</div>
             </div>
             <div class="modal__body">
-               <form action="">
+               <form action="" name="call" class="call">
                    <input type="text" name="phone" id="phone-mask2" placeholder="Телефон*">
+                   <input type="hidden" name="hide" value="call">
                    <button type="submit" data-modal="thanks" class="btn">Жду звонок</button>
                </form>
             </div>

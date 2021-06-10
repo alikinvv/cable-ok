@@ -77,6 +77,83 @@ $(document).keyup((e) => {
     if (e.keyCode === 27 && $('.backdrop').hasClass('active')) closeModal();
 });
 
-$('form').on('submit', (e) => {
+$('body').on('submit', 'form', (e) => {
     e.preventDefault();
+
+    var form = null;
+    var fd = null;
+
+    if ($(e.currentTarget).hasClass('call')) {
+        form = document.querySelector('form.call');
+        fd = new FormData(form);
+
+        if ($('.call input[name="phone"]').val() !== '') {
+            $.ajax({
+                type: "POST",
+                url: "../form.php",
+                contentType: false,
+                processData: false,
+                data: fd,
+                success: () => {
+                    $('.modal').removeClass('active');
+                    $('.modals').addClass('active');
+                    $('.modal.success').addClass('active');
+                    $('input:not([type="hidden"])').val('');
+                    $('textarea').val('');
+                    $('.files-block').remove();
+                }
+            });
+        } else {
+            if ($('.call input[name="phone"]').val() === '') {
+                $('.call input[name="phone"]').addClass('error');
+            }
+        }
+    } else if ($(e.currentTarget).hasClass('consultation')) {
+        form = document.querySelector('form.consultation');
+        fd = new FormData(form);
+
+        if ($('.consultation input[name="phone"]').val() !== '' && $('.consultation input[name="name"]').val() !== '' && $('.consultation input[name="email"]').val() !== '') {
+            $.ajax({
+                type: "POST",
+                url: "../form.php",
+                contentType: false,
+                processData: false,
+                data: fd,
+                success: () => {
+                    $('.modal').removeClass('active');
+                    $('.modals').addClass('active');
+                    $('.modal.success').addClass('active');
+                    $('input:not([type="hidden"])').val('');
+                    $('textarea').val('');
+                    $('.files-block').remove();
+                }
+            });
+        } else {
+            if ($('.consultation input[name="phone"]').val() === '') {
+                $('.consultation input[name="phone"]').addClass('error');
+            }
+
+            if ($('.consultation input[name="name"]').val() === '') {
+                $('.consultation input[name="name"]').addClass('error');
+            }
+
+            if ($('.consultation input[name="email"]').val() === '') {
+                $('.consultation input[name="email"]').addClass('error');
+            }
+        }
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "../form.php",
+            data: $(e.currentTarget).serialize(),
+            success: () => {
+                $('.modal').removeClass('active');
+                $('.modals').addClass('active');
+                $('.modal.success').addClass('active');
+                $('input:not([type="hidden"])').val('');
+                $('textarea').val('');
+                $('.files-block').remove();
+            }
+        });
+    }
 });

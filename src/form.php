@@ -5,18 +5,18 @@ require_once('phpmailer/PHPMailerAutoload.php');
 $mail = new PHPMailer;
 $mail->CharSet = 'utf-8';
 
-//$mail->SMTPDebug = 3;                               // Enable verbose debug output
+$mail->SMTPDebug = 3;                               // Enable verbose debug output
 
 $mail->isSMTP();                                      // Set mailer to use SMTP
-$mail->Host = 'smtp.yandex.ru';  																							// Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                               // Enable SMTP authentication
+$mail->Host = 'smtp.yandex.ru';  																							// Specify main and backup SMTP servers
 $mail->Username = 'phpmails@yandex.ru'; // Ваш логин от почты с которой будут отправляться письма
-$mail->Password = 'dxxblnadwrjtltic'; // Ваш пароль от почты с которой будут отправляться письма
-$mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-$mail->Port = 465; // TCP port to connect to / этот порт может отличаться у других провайдеров
+$mail->Password = 'sutkmqhhblnonrmk'; // Ваш пароль от почты с которой будут отправляться письма
+$mail->SMTPSecure = 'tsl';                            // Enable TLS encryption, `ssl` also accepted
+$mail->Port = 25; // TCP port to connect to / этот порт может отличаться у других провайдеров
 
 $mail->setFrom('phpmails@yandex.ru'); // от кого будет уходить письмо?
-$mail->addAddress('lecaw@yandex.ru'); // zayavka@astrong.info Кому будет уходить письмо
+$mail->addAddress('lecaw@yandex.ru'); // Кому будет уходить письмо
 //$mail->addAddress('ellen@example.com');               // Name is optional
 //$mail->addReplyTo('info@example.com', 'Information');
 //$mail->addCC('cc@example.com');
@@ -25,7 +25,7 @@ $mail->addAddress('lecaw@yandex.ru'); // zayavka@astrong.info Кому буде�
 //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
 $mail->isHTML(true);  
 
-if ($_POST['hide'] === 'call') {
+if ($_POST['hide'] === 'request') {
     $mail->Subject = 'Заявка на звонок';
     $mail->Body    = 'Телефон: ' . $_POST['phone'];
 }

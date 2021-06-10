@@ -133,6 +133,10 @@ input {
 	&::placeholder {
 		color: #828282;
 	}
+
+	&.error {
+		border: 1px solid red !important;
+	}
 }
 
 .subtitle {
@@ -338,16 +342,6 @@ input {
 	background: url('../img/main.jpg') no-repeat center;
 	background-size: cover;
 
-	&.show {
-		h1,
-		ul,
-		.btn,
-		.main__subtitle {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
 	.container {
 		@include r(1665) {
 			padding-left: 10%;
@@ -380,9 +374,6 @@ input {
 		position: relative;
 		display: inline-block;
 		margin: 0 0 -9px;
-		transition: all .6s ease-in-out;
-		opacity: 0;
-		transform: translateY(-50px);
 
 		&::before {
 			content: '';
@@ -409,18 +400,12 @@ input {
 		text-transform: uppercase;
 		line-height: 1.25;
 		margin-bottom: 34px;
-		transition: all .6s ease-in-out .2s;
-		opacity: 0;
-		transform: translateY(-50px);
 	}
 
 	ul {
 		list-style-type: none;
 		padding-left: 0;
 		margin-bottom: 44px;
-		transition: all .6s ease-in-out .4s;
-		opacity: 0;
-		transform: translateY(-50px);
 
 		li {
 			position: relative;
@@ -440,10 +425,6 @@ input {
 	}
 
 	.btn {
-		transition: all .6s ease-in-out .8s;
-		opacity: 0;
-		transform: translateY(-50px);
-
 		&.anime {
 			transition-delay: 0s;
 			transition: $trans;
@@ -1471,6 +1452,7 @@ input {
 
 			input {
 				margin-bottom: 20px;
+				border: 1px solid #333;
 
 				&:last-child {
 					margin-bottom: 0;

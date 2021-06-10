@@ -83,11 +83,11 @@ $('body').on('submit', 'form', (e) => {
     var form = null;
     var fd = null;
 
-    if ($(e.currentTarget).hasClass('call')) {
-        form = document.querySelector('form.call');
+    if ($(e.currentTarget).hasClass('request')) {
+        form = document.querySelector('form.request');
         fd = new FormData(form);
 
-        if ($('.call input[name="phone"]').val() !== '') {
+        if ($('.request input[name="phone"]').val() !== '') {
             $.ajax({
                 type: "POST",
                 url: "/build/form.php",
@@ -95,17 +95,18 @@ $('body').on('submit', 'form', (e) => {
                 processData: false,
                 data: fd,
                 success: () => {
-                    $('.modal').removeClass('active');
-                    $('.modals').addClass('active');
-                    $('.modal.success').addClass('active');
+                    if (!$('.backdrop').hasClass('active')) $('.backdrop').addClass('active');
+                    $('.modal.active').removeClass('active');
+                    $(`.modal[data-modal="thanks"]`).addClass('active');
+                    setTimeout(() => {
+                        $('.modal.active').find('svg').addClass('animate');
+                    }, 100);
                     $('input:not([type="hidden"])').val('');
-                    $('textarea').val('');
-                    $('.files-block').remove();
                 }
             });
         } else {
-            if ($('.call input[name="phone"]').val() === '') {
-                $('.call input[name="phone"]').addClass('error');
+            if ($('.request input[name="phone"]').val() === '') {
+                $('.request input[name="phone"]').addClass('error');
             }
         }
     } else if ($(e.currentTarget).hasClass('consultation')) {
@@ -120,12 +121,13 @@ $('body').on('submit', 'form', (e) => {
                 processData: false,
                 data: fd,
                 success: () => {
-                    $('.modal').removeClass('active');
-                    $('.modals').addClass('active');
-                    $('.modal.success').addClass('active');
+                    if (!$('.backdrop').hasClass('active')) $('.backdrop').addClass('active');
+                    $('.modal.active').removeClass('active');
+                    $(`.modal[data-modal="thanks"]`).addClass('active');
+                    setTimeout(() => {
+                        $('.modal.active').find('svg').addClass('animate');
+                    }, 100);
                     $('input:not([type="hidden"])').val('');
-                    $('textarea').val('');
-                    $('.files-block').remove();
                 }
             });
         } else {

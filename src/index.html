@@ -335,19 +335,20 @@
 
         <div class="flex">
             <div>
-                <form action="">
+                <form action="" name="consultation" class="consultation">
                     <div class="form-title">Закажите констультацию <br> <strong>бесплатно</strong> прямо сейчас</div>
                     <div class="form-group">
-                        <input type="text" placeholder="Имя*">
+                        <input type="text" name="name" placeholder="Имя*">
                     </div>
                     <div class="form-group">
                         <input type="text" name="phone" id="phone-mask" placeholder="Телефон*">
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Email">
+                        <input type="email" name="email" placeholder="Email">
                     </div>
     
-                    <button class="btn">Отправить</button>
+                    <input type="hidden" name="hide" value="consultation">
+                    <button type="submit" class="btn">Отправить</button>
                 </form>
 
                 <div class="or">
@@ -404,7 +405,7 @@
                     <rect class="l2" x="44.5547" y="21.1216" width="1.11981" height="25.7034" rx="0.559903" transform="rotate(45 44.5547 21.1216)" fill="#00CE52"/>
                 </svg>
                 
-                <p><strong>Спасибо за заявку!</strong> <br> Наш менеджер свяжется с вами в течение 10 минут, <br> оставайтесь на связи</p>
+                <p><strong>Спасибо за заявку!</strong> <br> Наш менеджер свяжется с вами в ближайшее время, <br> оставайтесь на связи</p>
                 <a href="javascript:void(0)" class="btn close">Закрыть</a>
             </div>
         </div>
@@ -418,9 +419,10 @@
                 <div class="modal__title">Обратный звонок</div>
             </div>
             <div class="modal__body">
-               <form action="">
+               <form action="" name="request" class="request">
                    <input type="text" name="phone" id="phone-mask2" placeholder="Телефон*">
-                   <button type="submit" data-modal="thanks" class="btn">Жду звонок</button>
+                   <input type="hidden" name="hide" value="request">
+                   <button type="submit" class="btn">Жду звонок</button>
                </form>
             </div>
         </div>
